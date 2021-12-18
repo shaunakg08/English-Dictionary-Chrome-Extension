@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -78,7 +78,18 @@ span) {
 
 .search input:valid~span {
     display: block;
-    color: #070808
+    color: #070808;
+}
+
+.wrapper .info-text {
+    font-size: 16px;
+    color: #6c6a6e;
+    user-select: none;
+    margin: -3px 0 -10px 0;
+}
+
+.wrapper ul {
+    display: none;
 }
 
 .wrapper ul li {
@@ -115,7 +126,7 @@ ul .word i {
 .content li .details {
     padding-left: 10px;
     border-radius: 4px 0 0 4px;
-    border-left: 3px solid #95eb34;
+    border-left: 3px solid #302f2f;
 }
 
 .content li .details p {
@@ -123,4 +134,13 @@ ul .word i {
     font-weight: 500;
 }
 
-.content li ..details p {}
+.synonyms .details .list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.synonyms .details .list span {
+    cursor: pointer;
+    margin-right: 5px;
+    text-decoration: underline;
+}
