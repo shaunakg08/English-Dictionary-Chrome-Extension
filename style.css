@@ -88,8 +88,24 @@ span) {
     margin: -3px 0 -10px 0;
 }
 
-.wrapper ul {
+.wrapper.active .info-text {
     display: none;
+}
+
+.info-text span {
+    font-weight: 500;
+}
+
+.wrapper ul {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.wrapper.active ul {
+    height: 303px;
+    opacity: 1;
 }
 
 .wrapper ul li {
