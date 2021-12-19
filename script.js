@@ -31,7 +31,7 @@ function data(result, word) {
 
         if (definition.synonyms[0] == undefined) {
             //if there is no synonym then hide the synonyms div
-            synonym.parentElement.style.display = "none";
+            synonym.innerHTML = "No Synonyms";
         } else {
 
             synonym.parentElement.style.display = "block";
@@ -39,7 +39,7 @@ function data(result, word) {
 
             //getting 5 synonyms and passing them inside synonyms div
             for (let i = 0; i < 5; i++) {
-                let tag = `<span onclick= search('${definition.synonyms[i]}}')>${definition.synonyms[i]},</span>`;
+                let tag = `<span onclick= search('${definition.synonyms[i]}')>${definition.synonyms[i]},</span>`;
                 synonym.insertAdjacentHTML("beforeend", tag);
 
             }
