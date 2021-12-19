@@ -2,7 +2,8 @@ const wrapper = document.querySelector(".wrapper"),
     synonym = document.querySelector(".synonyms .list "),
     searchInput = wrapper.querySelector("input"),
     infoText = wrapper.querySelector(".info-text"),
-    volumeIcon = wrapper.querySelector(".word i");
+    volumeIcon = wrapper.querySelector(".word i"),
+    removeIcon = wrapper.querySelector(".search span")
 
 let audio;
 
@@ -12,7 +13,6 @@ function data(result, word) {
         //message returned for not able to find the meaning
         infoText.innerHTML = `Cannot find the meaning of <span>"${word}"</span>. Please try to search for another word.`;
     } else {
-        console.log(result);
         wrapper.classList.add("active");
         let definition = result[0].meanings[0].definitions[0];
         phonetics = `${result[0].meanings[0].partOfSpeech} /${result[0].phonetics[0].text}/`;
@@ -39,7 +39,7 @@ function data(result, word) {
 
             //getting 5 synonyms and passing them inside synonyms div
             for (let i = 0; i < 5; i++) {
-                let tag = `<span>${definition.synonyms[i]},</span>`;
+                let tag = `<span onclick= search('${definition.synonyms[i]}}')>${definition.synonyms[i]},</span>`;
                 synonym.insertAdjacentHTML("beforeend", tag);
 
             }
@@ -49,8 +49,18 @@ function data(result, word) {
 
 
 }
+
+//search when one clicks on a synonym
+function search(word) {
+    searchInput.value = word;
+    fetchApi(word);
+
+}
+
 // fetch API function
 function fetchApi(word) {
+
+    wrapper.classList.remove("active");
     infoText.style.color = "#000";
     infoText.innerHTML = `Searching the meaning of <span>"${word}"</span>`;
     let url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
@@ -70,3 +80,11 @@ searchInput.addEventListener("keyup", e => {
 volumeIcon.addEventListener("click", () => {
     audio.play();
 });
+
+removeIcon.addEventListener("click", () => {
+    searchInput.value = "";
+    searchInput.focus();
+    wrapper.classList.remove("active");
+    infoText.style.color = "#6c6a6e";
+    infoText.innerHTML = "Type a word to search and press enter to get its meaning, example and synonyms.";
+})
