@@ -1,7 +1,10 @@
 const wrapper = document.querySelector(".wrapper"),
     synonym = document.querySelector(".synonyms .list "),
     searchInput = wrapper.querySelector("input"),
-    infoText = wrapper.querySelector(".info-text");
+    infoText = wrapper.querySelector(".info-text"),
+    volumeIcon = wrapper.querySelector(".word i");
+
+let audio;
 
 //data function 
 function data(result, word) {
@@ -13,6 +16,8 @@ function data(result, word) {
         wrapper.classList.add("active");
         let definition = result[0].meanings[0].definitions[0];
         phonetics = `${result[0].meanings[0].partOfSpeech} /${result[0].phonetics[0].text}/`;
+        //cresting Audio object and passing audio src
+        audio = new Audio("https:" + result[0].phonetics[0].audio);
 
 
         //passing data to their respective element
@@ -20,7 +25,8 @@ function data(result, word) {
         document.querySelector(".word span").innerHTML = phonetics;
         document.querySelector(".meaning span").innerHTML = definition.definition;
         document.querySelector(".example span").innerHTML = definition.example;
-        synonym.innerHTML = "";
+
+
 
 
         if (definition.synonyms[0] == undefined) {
@@ -59,4 +65,8 @@ searchInput.addEventListener("keyup", e => {
         fetchApi(e.target.value);
 
 
+});
+
+volumeIcon.addEventListener("click", () => {
+    audio.play();
 });
