@@ -1,6 +1,6 @@
 <h1>English Dictionary -Chrome Extension</h1>
 
-## A Chrome Extension that allows you to easily look up the definition of a term without having to switch tabs, saving you time.
+## A Chrome Extension that allows you to easily look up the definition of a term without having to switch tabs, saving your time.
 <br>
 <p align="center"  ><img  width="15%" src="logo.png" alt="Coding"></p>
 <hr>
